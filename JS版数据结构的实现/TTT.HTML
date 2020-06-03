@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+	<script src="./test1.js"></script>
+    <style>
+        ul {
+            display: flex;
+            flex-direction: row;
+        }
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <li id="li9" style="order:9">9</li>
+    <button id="add">添加</button>
+    <ul id="uls">
+        <li style="order:1">1</li>
+        <li style="order:3">3</li>
+        <li style="order:7">7</li>
+        <li style="order:11">11</li>
+        <li style="order:8;">8</li>
+    </ul>
+<script>
+	document.getElementById("add").onclick = function(){
+      var uls = document.getElementById("uls");
+      var li = document.getElementById("li9");
+      uls.appendChild(li);
+    }
+</script>
+</body>
+</html>

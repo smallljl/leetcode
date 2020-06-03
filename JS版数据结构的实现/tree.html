@@ -1,0 +1,86 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-01-04 16:34:21
+ * @LastEditTime : 2020-01-12 22:37:02
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \test\tree.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./tree.js">
+        // 节点的度  子节点的个数
+        // 数的度  最大的度   例如二叉树的度为2    
+        // 叶子节点  度为0的节点  例如 树最下的那层节点
+        // 兄弟节点  有同一个根节点
+        // 路径和路径的长度 A-B-C-D 的距离
+        // 节点层次 根节点为1  后面+1  层数都是从1开始数的 *******
+        // 树的深度  树最大的层次
+        
+        // ***********************
+        // 结论： 所以树的本质都可以用二叉树表示出来  兄弟-儿子表示法旋转 
+
+        // 二叉树
+        // 每一层的最大节点数为 2^(i-1);
+        // 深度k 最大总节点数为 2^k -1
+        // 叶子节点的总数 = 深度为2节点的总数 +1 ;  n0 = n2+1
+
+        // 完美二叉树 ===》 满二叉树
+        // 完全二叉树 ===》 最后一层外，其他层都是最大个数  &&&  最后一层从左到右连续存在
+        // 满二叉树 （特殊的完全二叉树）
+
+         // 二叉树的存储
+         // 数据  空间浪费  （非完全二叉树）
+    </script>
+    <script>
+        var bst = new BinarySearchTree();
+        bst.insert(11);
+        bst.insert(7);
+        bst.insert(15);
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(9);
+        bst.insert(8);
+        bst.insert(10);
+        bst.insert(13);
+        bst.insert(12);
+        bst.insert(14);
+        bst.insert(20);
+        bst.insert(18);
+        bst.insert(25);
+        bst.insert(6);
+        bst.insert(19);
+        console.log(bst);
+        // var resultString = "";
+        // // bst.preOrderTraversal(function(data){
+        // //     resultString += data + " "
+        // // });
+        //
+        // bst.postOrderTraverse(function(data){
+        //     resultString += data + " ";
+        // })
+        //
+        // console.log(resultString);
+        alert(bst.max());
+        alert(bst.min());
+        alert(bst.search(25));
+        alert(bst.search(2));
+        // alert(bst.search(25));
+        bst.remove(9);
+        bst.remove(7);
+        bst.remove(15);
+        var resultString = "";
+        bst.preOrderTraverse(function(key){
+            resultString += key +" ";
+        });
+        alert(resultString);
+    </script>
+</body>
+</html>

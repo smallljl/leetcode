@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="./upgradeLinkendList.js"></script>
+<script>
+    var list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(7);
+    console.log(list);
+    list.insert(2,"a");
+    list.insert(2,"a");
+    console.log(list,list.toString());
+    list.update(2,"b");
+    console.log(list,list.toString());
+    console.log(list.get(2));
+    console.log(list,list.toString());
+    console.log(list.indexOf("b"));
+    console.log(list,list.toString());
+    console.log(list.removeAt(2));
+    console.log(list,list.toString());
+    console.log(list.reverse(list.head));;
+</script>
+</body>
+</html>

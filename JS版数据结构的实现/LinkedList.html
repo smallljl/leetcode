@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./LinkedList.js"></script>
+	<script>
+		var list = new LinkedList();
+		list.append("abc");
+		list.append("cba");
+		list.append("nba");
+		
+		list.insert(1,"刘鑫");
+		alert("插入下标1   "+list);
+		console.log(list);
+		alert('获取下标1   '+list.get(1));
+		alert('获取刘鑫的下标   '+list.indexOf("刘鑫"));
+		list.update(1,"张三")
+		alert('获取 下标1  修改为张三   '+list.get(1));
+		alert('删除 下标1  '+list.removeAt(1));
+		alert('删除 下标1  '+list)
+		list.remove("abc");
+		alert("删除abc   "  + list) 
+	</script>
+</body>
+</html>

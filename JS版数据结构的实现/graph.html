@@ -1,0 +1,63 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-01-24 11:06:35
+ * @LastEditTime : 2020-01-25 17:21:59
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \练习\graph.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./dict.js"></script>
+    <script src="./queue.js"></script>
+    <script src="./graph01.js"></script>
+    <!-- <script src="./graph.js"></script> -->
+    <script>
+        // 顶点的三种状态
+        // 1. 白色： 表示该顶点还没有被访问
+        // 2. 灰色： 表示该顶点被访问过，但并未被探索过
+        // 3. 黑色； 表示该顶点被访问过，且被完全探索过
+    </script>
+    <script>
+        var g = new Graph();
+        var myVertexes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+        // 添加顶点
+        for (var i = 0; i < myVertexes.length; i++) {
+            g.addVertex(myVertexes[i]);
+        }
+        g.addEdge('A', 'B');
+        g.addEdge('A', 'C');
+        g.addEdge('A', 'D');
+        g.addEdge('C', 'D');
+        g.addEdge('C', 'G');
+        g.addEdge('D', 'G');
+        g.addEdge('B', 'E');
+        g.addEdge('B', 'F');
+        g.addEdge('E', 'I');
+        g.addEdge('D', 'H');
+        alert(g);
+
+        var resultStriing = "";
+        g.bfs(g.vertexes[0], function (v) {
+            resultStriing += v + ' ';
+        });
+        alert(resultStriing);
+
+        // var resultStriing = "";
+        // g.dfs(g.vertexes[0], function (v) {
+        //     resultStriing += v + ' ';
+        // });
+        // alert(resultStriing);
+    </script>
+</body>
+
+</html>

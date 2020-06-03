@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./hashTable.js"></script>
+    <script>
+        //  [  [   [k,v],[k,v],[k,v]    ]  ]
+        alert(hashFunc("abc",7))  // 4
+        alert(hashFunc("cba",7))  // 3
+        alert(hashFunc("nba",7))  // 5
+        alert(hashFunc("mba",7))  // 1
+
+        var has = new HashTable();
+        has.put("lll","李俊杰");
+        has.put("mmm","李晓明");
+        console.log(has);
+
+        console.log("获取lll: " + has.get("lll"));
+        console.log("获取mmm2:   "  + has.get("mmm2"));
+
+        console.log("remove lll: 李俊杰     " + has.remove("lll"));
+        console.log("remove lll222: null     " + has.remove("lll222"));
+
+        console.log("修改mmm李晓明  " + has.put("mmm","苏双双"));
+    </script>
+</body>
+</html>

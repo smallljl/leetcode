@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./Set.js"></script>
+    <script>
+        var set = new Set();
+        set.add("李俊杰");
+        set.add("李小明");
+        set.add("张三");
+        set.add("李四");
+        alert(set.values());
+
+
+        alert(set.has("李小明"));
+
+        alert(set.remove("张三"));
+
+        alert(set.values());
+
+        alert("是否有张三   "+ set.has("张三"));
+
+        alert(set.remove());
+        alert(set.values());
+
+        var setA = new Set();
+        setA.add("李俊杰");
+        setA.add("李小明");
+        setA.add("张三");
+
+        var setB = new Set();
+        setB.add("李俊杰");
+        setB.add("李小明");
+        setB.add("李四");
+
+        alert("并集   "+setA.union(setB).values());
+
+        alert("交集   "+setA.intersection(setB).values());
+
+        alert("差集   "+setA.difference(setB).values());
+
+        alert("是否是子集    "+setA.subset(setB));
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1d9a10b-3895-483e-8e02-c09779e1a24e" name="默认更改列表" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1U6EePssNH6iI3Zc7ncNcjlRBNF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../练习" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RunManager" selected="Node.js.lesson1.js">
+    <configuration name="dp:4" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/test/dp/lesson1.test.js" />
+      <test-names>
+        <test-name value="dp:4" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="lesson1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/code/dp/lesson1.js" working-dir="$PROJECT_DIR$/code/dp">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.lesson1.js" />
+        <item itemvalue="Jest.dp:4" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1d9a10b-3895-483e-8e02-c09779e1a24e" name="默认更改列表" comment="" />
+      <created>1574668739765</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574668739765</updated>
+      <workItem from="1574668742415" duration="2829000" />
+      <workItem from="1574680324256" duration="13361000" />
+      <workItem from="1574734832010" duration="13000" />
+      <workItem from="1574778616047" duration="7316000" />
+      <workItem from="1574817177314" duration="25000" />
+      <workItem from="1574824034668" duration="10692000" />
+      <workItem from="1574904239109" duration="10863000" />
+      <workItem from="1574929028285" duration="10627000" />
+      <workItem from="1574989593992" duration="7909000" />
+      <workItem from="1575027947548" duration="1932000" />
+      <workItem from="1575037028042" duration="5558000" />
+      <workItem from="1575080416177" duration="1806000" />
+      <workItem from="1575105357031" duration="2169000" />
+      <workItem from="1575108602995" duration="3738000" />
+      <workItem from="1575181237117" duration="979000" />
+      <workItem from="1575286687374" duration="654000" />
+      <workItem from="1575288030555" duration="545000" />
+      <workItem from="1575288871552" duration="8032000" />
+      <workItem from="1575298519718" duration="1201000" />
+      <workItem from="1575335431375" duration="310000" />
+      <workItem from="1575335987630" duration="879000" />
+      <workItem from="1575337773110" duration="1072000" />
+      <workItem from="1575339299806" duration="4575000" />
+      <workItem from="1575352565442" duration="254000" />
+      <workItem from="1575353172310" duration="253000" />
+      <workItem from="1575353718656" duration="241000" />
+      <workItem from="1575354603382" duration="6291000" />
+      <workItem from="1575377445842" duration="8188000" />
+      <workItem from="1575426558171" duration="47000" />
+      <workItem from="1575451716661" duration="1507000" />
+      <workItem from="1575458653882" duration="8841000" />
+      <workItem from="1575509133121" duration="5460000" />
+      <workItem from="1575536577527" duration="833000" />
+      <workItem from="1575621764965" duration="638000" />
+      <workItem from="1575786156378" duration="126000" />
+      <workItem from="1575787037253" duration="14345000" />
+      <workItem from="1575813582013" duration="718000" />
+      <workItem from="1575853413674" duration="9827000" />
+      <workItem from="1575873734305" duration="594000" />
+      <workItem from="1580122993720" duration="2113000" />
+      <workItem from="1580267478608" duration="1347000" />
+      <workItem from="1580273980443" duration="33000" />
+      <workItem from="1585142537310" duration="953000" />
+      <workItem from="1585150105973" duration="322000" />
+      <workItem from="1585491920938" duration="1296000" />
+      <workItem from="1585530873622" duration="33000" />
+      <workItem from="1588587465355" duration="958000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="464" y="168" key="FileChooserDialogImpl" timestamp="1588601137187">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="464" y="168" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.768@0.0.1366.728" timestamp="1580274009976" />
+    <state x="464" y="168" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1588601137187" />
+  </component>
+</project>

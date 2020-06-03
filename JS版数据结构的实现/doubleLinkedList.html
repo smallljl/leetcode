@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./doubleLinkedList.js"></script>
+	<script>
+		var list = new doubleLinkedList();
+		list.append("abc");
+		list.append("cba");
+		list.append("nba");
+		
+		alert(list);
+		
+		list.insert(1,"俊杰");
+		list.insert(2,"小明");
+		
+		alert("添加俊杰和小明" +list.backwardString());
+		// alert(list.fowardString());
+		
+		
+		alert('get 1 '+ list.get(1));
+		alert('indexOf 2 '+ list.indexOf('小明'));
+		
+		list.updata(1,"李俊杰");
+		list.updata(2,"李小明");
+		alert(list)
+		
+		alert(list.removeAt(1))
+		
+		alert("移除李俊杰  " + list);
+		alert(list.removeAt(1))
+		
+		alert("移除李小明  " + list);
+		
+		alert("判断是否为空 "+ list.isEmpty());
+		
+	
+		alert(list)
+		
+		alert("获取长度 " + list.size());
+		
+		
+		alert("获取头部 " + list.getHead());
+		
+		alert("获取尾部 " + list.getTail());
+		
+		debugger;
+	</script>
+</body>
+</html>
