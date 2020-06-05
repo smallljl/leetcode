@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 19:38:17
- * @LastEditTime: 2020-05-31 13:28:43
- * @LastEditors: your name
+ * @LastEditTime: 2020-06-04 10:03:14
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \algorithm008-class02\Week_06\152. 乘积最大子数组.js
  */ 
@@ -29,5 +29,25 @@
  * 
  */
 var maxProduct = function(nums) {
-
+   let length = nums.length;
+   if(length === 0){
+      return 0;
+   }
+   let dp = new Array(length).fill(new Array(2));
+   dp[0][0] = nums[0];  // 表示最小值
+   dp[0][1] = nums[0];  // 表示最大值
+   for(let i = 1; i < length;i++){
+      if(nums[i] > 0){
+         dp[i][0] = Math.min(nums[i],nums[i]*dp[i-1][0]);
+         dp[i][1] = Math.max(nums[i],nums[i]*dp[i-1][0]);
+      } else {
+         dp[i][0] = Math.min(nums[i],nums[i]*dp[i-1][1]);
+         dp[i][1] = Math.max(nums[i],nums[i]*dp[i-1][0]);
+      }
+   }
+   let res = dp[0][1];
+   for(let i = 1; i < length;i++){
+      res = Math.max(res,dp[i][1]);
+   }
+   return res;
 }; 
