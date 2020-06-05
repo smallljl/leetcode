@@ -23,7 +23,7 @@
  *
  *
  */ 
-
+  
 var numDecodings = function(s) {
    
 }; 
