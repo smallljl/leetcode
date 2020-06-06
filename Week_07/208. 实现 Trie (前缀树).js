@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-01 22:08:11
- * @LastEditTime: 2020-06-01 22:09:01
+ * @LastEditTime: 2020-06-07 00:47:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \algorithm008-class02\Week_07\208. 实现 Trie (前缀树).js
@@ -27,8 +27,14 @@ trie.search("app");     // 返回 true
 /**
  * Initialize your data structure here.
  */
-var Trie = function() {
 
+var TrieNode = function(){
+    this.next = {};
+    this.isEnd = false;
+}
+
+var Trie = function() {
+    this.root = new TrieNode();
 };
 
 /**
@@ -37,7 +43,16 @@ var Trie = function() {
  * @return {void}
  */
 Trie.prototype.insert = function(word) {
-
+    if(!word) return false;
+    let node = this.root;
+    for(let i = 0; i < word.length; i++){
+        if(!node.next[word[i]]){
+            node.next[word[i]] = new TrieNode();
+        }
+        node = node.next[word[i]];
+    }
+    node.isEnd = true;
+    return false;
 };
 
 /**
@@ -46,7 +61,16 @@ Trie.prototype.insert = function(word) {
  * @return {boolean}
  */
 Trie.prototype.search = function(word) {
-
+    if(!word) return false;
+    let node = this.root;
+    for(let i = 0; i < word.length;i++){
+        if(node.next[word[i]]){
+            node = node.next[word[i]];
+        } else {
+            return false;
+        }
+    }
+    return node.isEnd;
 };
 
 /**
@@ -55,7 +79,16 @@ Trie.prototype.search = function(word) {
  * @return {boolean}
  */
 Trie.prototype.startsWith = function(prefix) {
-
+    if(!prefix) return true;
+    let node = this.root;
+    for(let i = 0; i < prefix.length;i++){
+        if(node.next[prefix[i]]){
+            node = node.next[prefix[i]];
+        } else {
+            return false;
+        }
+    }
+    return true;
 };
 
 /**
