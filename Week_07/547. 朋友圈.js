@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-06-01 22:11:52
- * @LastEditTime: 2020-06-01 22:12:20
- * @LastEditors: your name
+ * @LastEditTime: 2020-06-07 01:28:08
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \algorithm008-class02\Week_07\547. 朋友圈.js
  */ 
@@ -41,5 +41,5 @@
  * 
  */ 
 var findCircleNum = function(M) {
-
+   // DFS BFS  (类似 岛屿问题)
 };
