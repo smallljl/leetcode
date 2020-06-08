@@ -33,5 +33,5 @@
  * 
  */ 
 var solveNQueens = function(n) {
-
+   
 };
