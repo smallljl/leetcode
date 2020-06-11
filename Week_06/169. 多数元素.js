@@ -8,3 +8,21 @@
  * 
  * 
  */ 
+var majorityElement = function(nums) {
+  nums.sort((a,b) => a - b);
+  return nums[Math.floor(nums.length / 2) ];
+};
+
+var gen2 = function(nums) {
+  let len = nums.length;
+  let map = {};
+  let num = 0;
+  for(let i = 0;i < len; i++){
+      (map[nums[i]]) ? (map[nums[i]]++) : (map[nums[i]]=1);
+      if(map[nums[i]] > len / 2){
+          num = nums[i];
+          break;
+      } 
+  }
+  return num;
+};
