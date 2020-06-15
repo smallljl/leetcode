@@ -9,7 +9,7 @@
         所有单词只由小写字母组成。
         字典中不存在重复的单词。
         你可以假设 beginWord 和 endWord 是非空的，且二者不相同。
-        示例 1:
+        示例 1: 
         输入:
             beginWord = "hit",
             endWord = "cog",
@@ -47,7 +47,7 @@ var ladderLength = function(beginWord, endWord, wordList) {
                 used[i] = false;
             }
         }
-    }
+    }       
     function diff(a,b){
         let d = 0;
         for(let i = 0; i < a.length;i++){

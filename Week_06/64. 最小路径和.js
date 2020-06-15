@@ -18,13 +18,14 @@
     链接：https://leetcode-cn.com/problems/minimum-path-sum
  */ 
 var minPathSum = function(grid) {
-    for (int i = grid.length - 1; i >= 0; i--) {
-        for (int j = grid[0].length - 1; j >= 0; j--) {
-            if(i == grid.length - 1 && j != grid[0].length - 1)
+    //从右下角开始
+    for (let i = grid.length - 1; i >= 0; i--) {      // row 
+        for (let j = grid[0].length - 1; j >= 0; j--) {  // col
+            if(i == grid.length - 1 && j != grid[0].length - 1)  // 最后一行
                 grid[i][j] = grid[i][j] +  grid[i][j + 1];
-            else if(j == grid[0].length - 1 && i != grid.length - 1)
+            else if(j == grid[0].length - 1 && i != grid.length - 1)  //  最后一列
                 grid[i][j] = grid[i][j] + grid[i + 1][j];
-            else if(j != grid[0].length - 1 && i != grid.length - 1)
+            else if(j != grid[0].length - 1 && i != grid.length - 1)  // 中间
                 grid[i][j] = grid[i][j] + Math.min(grid[i + 1][j],grid[i][j + 1]);
         }
     }
