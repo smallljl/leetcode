@@ -22,6 +22,5 @@ var reversePairs = function(nums) {
         let result = [];
         let left = 0;
         let right = 0;
-        
     }
 };
