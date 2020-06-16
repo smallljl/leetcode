@@ -16,7 +16,7 @@ function merge(left,right){
     right.length && result.push(right.shift());
     return result;
 }
-
+  
 let arr = [7,8,7,5,6,7,2,6,164,67,40];
 let newArr = mergeSort(arr);
 for(let i = 0; i < newArr.length;i++){
