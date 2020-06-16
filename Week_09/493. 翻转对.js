@@ -41,7 +41,7 @@ var reversePairs = function(nums) {
         return [...result,...left.slice(left_i),...right.slice(right_j)];
     }
     let mergeSort = (arr)=>{
-        if(arr.length <= 1){
+        if(arr.length <= 1){  
             return arr;
         }  
         let mid = arr.length >> 1;
