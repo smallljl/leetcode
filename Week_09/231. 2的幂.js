@@ -20,5 +20,5 @@
     链接：https://leetcode-cn.com/problems/power-of-two  
  */ 
 var isPowerOfTwo = function(n) {
-  
+   
 };
