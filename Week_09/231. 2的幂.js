@@ -17,8 +17,8 @@
     输出: false
 
     来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/power-of-two
+    链接：https://leetcode-cn.com/problems/power-of-two  
  */ 
 var isPowerOfTwo = function(n) {
-
+   
 };

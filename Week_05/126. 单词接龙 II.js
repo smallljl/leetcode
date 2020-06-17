@@ -96,7 +96,6 @@ let ladderL = function(beginWord,endWord,wordList){
     console.log(res);
 }
 
-
 let beginWord = "hit";
 let endWord = "cog";
 let wordList =["hot","dot","dog","lot","log"]
