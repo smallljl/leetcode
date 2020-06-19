@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-06-17 09:22:51
+ * @LastEditTime: 2020-06-19 17:50:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \leetcode\Week_09\06-14. 最长公共前缀.js
+ */ 
 /**
  *  编写一个函数来查找字符串数组中的最长公共前缀。
 
