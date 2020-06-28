@@ -13,5 +13,20 @@
  * 
  */
 var reverseWords = function(s) {
-
+   function reverseString(s) {
+      s = s.split("");
+      let left = 0,
+          right = s.length-1;
+      while (left < right){
+          let temp = s[left];
+          s[left++] = s[right];
+          s[right--] = temp;
+      }
+      return s.join("");
+    };
+    let strArr = s.replace(/\s+/g," ").split(" ");
+    for(let i = 0;i < strArr.length;i++){
+        strArr[i] = reverseString(strArr[i])
+    }
+    return strArr.join(" ");
 };
