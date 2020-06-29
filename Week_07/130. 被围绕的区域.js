@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-01 22:13:40
- * @LastEditTime: 2020-06-01 22:13:58
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \algorithm008-class02\Week_07\130. 被围绕的区域.js
- */ 
-/*
  *
  *  给定一个二维的矩阵，包含 'X' 和 'O'（字母 O）。
 

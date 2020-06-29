@@ -18,4 +18,18 @@
  * 
  * 
  *
- */ 
+ */
+var merge = function(intervals) {
+   let ans = [];
+   intervals.sort((a,b)=>a[0] - b[0]);
+   let idx = -1;
+   for(let i = 0; i < intervals.length;i++){
+      if(idx === -1 || intervals[i][0] > ans[idx][1]){
+         ans.push(intervals[i]);
+         idx ++;
+      } else {
+         ans[idx][1] = Math.max(ans[idx][1], intervals[i][1]);
+      }
+   }
+   return ans;
+};
