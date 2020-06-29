@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-17 09:22:51
- * @LastEditTime: 2020-06-29 17:06:04
+ * @LastEditTime: 2020-06-29 17:24:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \leetcode\Week_09\23-3. 无重复字符的最长子串.js
@@ -31,5 +31,11 @@
 链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
 */
 var lengthOfLongestSubstring = function(s) {
-  
+  let map = new Map(), max = 0;
+  for(let i = 0, j = 0,len = s.length; j < len; j++) {
+      (map.has(s[j])) && (i = Math.max(map.get(s[j]) + 1, i));
+      max = Math.max(max, j - i + 1);
+      map.set(s[j], j);
+  }
+  return max;
 };
