@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-15 19:10:16
- * @LastEditTime: 2020-06-29 17:07:29
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \leetcode\Week_09\493. 翻转对.js
- */ 
-/*
 给定一个数组 nums ，如果 i < j 且 nums[i] > 2*nums[j] 我们就将 (i, j) 称作一个重要翻转对。
 
 你需要返回给定数组中的重要翻转对的数量。

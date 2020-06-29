@@ -1,4 +1,12 @@
 /*
+ * @Author: your name
+ * @Date: 2020-06-11 11:15:33
+ * @LastEditTime: 2020-06-29 18:40:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \leetcode\Week_08\146. LRU缓存机制.js
+ */ 
+/*
 *
 
     运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。
@@ -7,7 +15,7 @@
     写入数据 put(key, value) - 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字/值」。
     当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
 
-    进阶:
+    进阶:   
 
     你是否可以在 O(1) 时间复杂度内完成这两种操作？
 
@@ -49,6 +57,6 @@ LRUCache.prototype.get = function(key) {
  * @param {number} value
  * @return {void}
  */
-LRUCache.prototype.put = function(key, value) {
+LRUCache.prototype.put = function(key, value) { 
 
-};
+}; // test
