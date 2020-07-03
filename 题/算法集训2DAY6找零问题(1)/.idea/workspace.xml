@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1465c037-a31d-48fc-89d6-a7a9af65b008" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1aw7BRUPGJbZO9mAE3Qq1dq8zfk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="F:/前端进阶班/Frontend-01-Template" />
+  </component>
+  <component name="RunManager">
+    <configuration name="背包问题.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/背包问题.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.背包问题.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1465c037-a31d-48fc-89d6-a7a9af65b008" name="Default Changelist" comment="" />
+      <created>1587634666629</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587634666629</updated>
+      <workItem from="1587634670409" duration="1618000" />
+      <workItem from="1587644204948" duration="26000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1587644229402">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1587644229402" />
+    <state width="1876" height="290" key="GridCell.Tab.0.bottom" timestamp="1587634778143">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1587634778143" />
+    <state width="1876" height="290" key="GridCell.Tab.0.center" timestamp="1587634778143">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1587634778143" />
+    <state width="1876" height="290" key="GridCell.Tab.0.left" timestamp="1587634778143">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1587634778143" />
+    <state width="1876" height="290" key="GridCell.Tab.0.right" timestamp="1587634778143">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1587634778143" />
+    <state x="1458" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587634740516">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1458" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1587634740516" />
+  </component>
+</project>

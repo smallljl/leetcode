@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function exchange(total,arr){
+    //     function _exchange(total,arr){
+    //         if(total <= 0) return [];
+    //         var max = 0;
+    //         for(var i = 0; i < arr.length;i++){
+    //             if(arr[i] > max && arr[i] <= total){
+    //                 max = arr[i];
+    //             }
+    //         }
+    //         return [max].concat(_exchange(total-max,arr));
+    //     }
+    //     return _exchange(total,arr);
+    // }
+    // var total = 51;
+    // var denos = [30, 25, 10, 5, 1];
+    // console.log(exchange(total, denos));
+    function frog(total){
+        function _frog(total){
+            if(total === 0) return 0;
+            if(total === 1) return 1;
+            if(total === 2) return 2;
+            return _frog(total-1) + _frog(total-2);
+        }
+        return _frog(total);
+    }
+    function frog2(total){
+        var cache = {};
+        function _frog(total){
+            if(cache[total] !== undefined){
+                return cache[total];
+            }
+            var result;
+            if(total === 0) result = 0;
+            else if(total === 1) result = 1;
+            else if(total === 2) result = 2;
+            else  result = _frog(total-1) + _frog(total-2);
+            cache[total] = result;
+            return result;
+        }
+        return _frog(total);
+    }
+    // console.time("没有动态规划");
+    // console.log(frog(40));
+    // console.timeEnd("没有动态规划");
+    // console.time("动态规划");
+    // console.log(frog2(40));
+    // console.timeEnd("动态规划");
+    function LCS(str1,str2){
+        function _LCS(str1,str2){
+            if(str1 === "" || str2 === ""){
+                return "";
+            }
+            if(str1[0] === str2[0]){
+                return str1[0] + _LCS(str1.substr(1),str2.substr(1));
+            }else {
+                var lcs1 = _LCS(str1.substr(1),str2);
+                var lcs2 = _LCS(str1,str2.substr(1));
+                if(lcs1.length > lcs2.length){
+                    return lcs1;
+                }else{
+                    return lcs2;
+                }
+            }
+        }
+        return _LCS(str1,str2);
+    }
+
+    /**
+     * @return {string}
+     */
+    function LCS2(str1,str2){
+        var cache = [];  // [{str:xx,str2:xx,result:xxx}]
+        function _LCS(str1,str2){
+            if(str1 === "" || str2 === ""){
+                return "";
+            }
+            for(var i = 0; i <cache.length;i++){
+                if(cache[i].str1 === str1 && cache[i].str2 === str2 ){
+                    return cache[i].result;
+                }
+            }
+            var result;
+            if(str1[0] === str2[0]){
+                result = str1[0] + _LCS(str1.substr(1),str2.substr(1));
+            }else {
+                var lcs1 = _LCS(str1.substr(1),str2);
+                var lcs2 = _LCS(str1,str2.substr(1));
+                if(lcs1.length > lcs2.length){
+                    result = lcs1;
+                }else{
+                    result = lcs2;
+                }
+            }
+            cache.push({
+                str1:str1,
+                str2:str2,
+                result:result
+            });
+            return result;
+        }
+        return _LCS(str1,str2);
+    }
+    /*console.time("邓哥");
+    console.log(LCS(
+        "邓哥是渡一",
+        "渡一爱你哟实打实"
+    ));
+    console.timeEnd("邓哥");
+    console.log("动态规划");
+    console.log(LCS2(
+        "邓哥是渡一",
+        "渡一爱你哟实打实"
+    ));
+    console.timeEnd("动态规划");*/
+
+    function exchange(total,denos){
+        var cache = []; // {total:xx,index:xx,result:xxx}
+        function _exchange(total,index){
+            // 1.看total是不是0,如果是,不需要找零
+            // 2.看total是不是等于第一个面值,如果等于,用第一张面值作为找零
+            // 3.total比第一个面值小,第一张面值无法用于找零，看后续面值
+            // 4.total比第一个面值打,分为找和不找，分别求解，比较解的结果，得到最终结果
+            if(total === 0){
+                return [];
+            }
+            if(total < 0){
+                return false;
+            }
+            if(index >= denos.length){
+                return false;
+            }
+            // 是否命中换成
+            for(var i = 0; i < cache.length;i++){
+                var c = cache[i];
+                if(c.total === total && c.index === index){
+                    return c.result;
+                }
+            }
+            var result;
+            var deno = denos[index];
+            if(total === deno){
+                result = [deno];
+            }
+            if(total < deno){
+                result = _exchange(total,index+1)
+            }
+            if(total > deno){
+                var result1 = _exchange(total-deno,index);
+                var result2 = _exchange(total,index+1);
+                if(result1 === false && result2 === false){
+                    result = false;
+                } else if(result1 === false && result2 !== false){
+                    result = result2
+                } else if(result2 === false && result1 !== false){
+                    result = [deno].concat(result1);
+                } else {
+                    result1 = [deno].concat(result1);
+                    if(result1.length < result2.length){
+                        result = result1;
+                    }else {
+                        result = result2
+                    }
+                }
+            }
+            cache.push({
+                total:total,
+                index:index,
+                result:result
+            });
+            return result;
+        }
+        return _exchange(total,0);
+    }
+    // console.log(exchange(50, [30, 25, 10, 5, 1]));;
+    // console.log(exchange(51, [11, 10, 5, 2]));
+
+    /* 0-1 背包问题
+    * 告诉我背包的容量（可容纳东西的总重量）
+    * 同时告诉我，有哪些物品
+    * 每个物品有两个属性， 重量、价值
+    * 每个物品只有一个
+    * 问：如何装，才能得到最大的价值
+    * 返回的是一个数组，数组中记录了装配的结果
+    * @param {*} total
+    * @param {*} objects
+    */
+    function package(total, objects) {
+        function _package(total,objects){
+            if(total === 0){
+                return [];
+            }
+            if(total < 0){
+                return false;
+            }
+            if(objects.length === 0){
+                return false;
+            }
+            var deno = objects[0];
+            if(total === deno.weight){
+                return [deno];
+            }
+            var left = objects.slice(1);
+            if(total < deno.weight){
+                return _package(total,left)
+            }
+            if(total > deno.weight){
+                // 要
+                var result1 = _package(total-deno.weight,objects);
+                // 不要
+                var result2 = _package(total,left);
+                if(result1 === false && result2 === false){
+                    return false;
+                }else if(result1 !== false && result2 === false){
+                    return [deno].concat(result1);
+                }else if(result2 !== false && result1 === false){
+                    return result2;
+                }else {
+                    result1 = [deno].concat(result1);
+
+                    function _sum(arr){
+                        var res = 0;
+                        for(var i = 0; i < arr.length;i++){
+                            res += arr[i].price;
+                        }
+                        return res;
+                    }
+                    if(_sum(result1) < _sum(result2)){
+                        return result1;
+                    }else{
+                        return result2;
+                    }
+                }
+            }
+        }
+        return _package(total,objects);
+    }
+
+    function package2(total, objects) {
+        var cache = [];
+        function _package(total,objects,index){
+            if(total === 0){ return []; }
+            if(total < 0){return false;}
+            if(index >= objects.length){return false;}
+            for(var i = 0; i <  cache.length; i++){
+                var c = cache[i];
+                if(c.total === total && c.index === index){
+                    return c.result;
+                }
+            }
+            var deno = objects[index];
+            var result;
+            if(total === deno.weight){
+                result = [deno];
+            }
+            // var left = objects.slice(index);
+            if(total < deno.weight){
+                result = _package(total,objects,index+1)
+            }
+            if(total > deno.weight){
+                // 要
+                var result1 = _package(total-deno.weight,objects,index);
+                // 不要
+                var result2 = _package(total,objects,index+1);
+                if(result1 === false && result2 === false){
+                    result = false;
+                }else if(result1 !== false && result2 === false){
+                    result = [deno].concat(result1);
+                }else if(result2 !== false && result1 === false){
+                    result = result2;
+                }else {
+                    result1 = [deno].concat(result1);
+                    function _sum(arr){
+                        var res = 0;
+                        for(var i = 0;i<arr.length;i++){
+                            res+=arr[i].price
+                        }
+                        return res;
+                    }
+                    if(_sum(result1) < _sum(result2)){
+                        result = result1;
+                    }else{
+                        result = result2;
+                    }
+                }
+            }
+            cache.push({
+                index:index,
+                total:total,
+                result:result
+            });
+            return result;
+        }
+        return _package(total,objects,0);
+    }
+    // 动态规划: 43.1171875ms
+    console.time("无动态规划");
+    var res = package(2000 , [
+        {
+            weight: 10,
+            price: 30
+        },
+        {
+            weight: 35,
+            price: 66
+        },
+        {
+            weight: 45,
+            price: 100
+        },
+        {
+            weight: 55,
+            price: 150
+        },
+        {
+            weight: 70,
+            price: 230
+        }
+    ]);
+    console.log(res.map(i=>i.weight));
+    console.timeEnd("无动态规划");
+
+
+    console.time("动态规划");
+    var res2 = package2(2000 , [
+        {
+            weight: 10,
+            price: 30
+        },
+        {
+            weight: 35,
+            price: 66
+        },
+        {
+            weight: 45,
+            price: 100
+        },
+        {
+            weight: 55,
+            price: 150
+        },
+        {
+            weight: 70,
+            price: 230
+        }
+    ]);
+    console.log(res2.map(i=>i.weight));
+    console.timeEnd("动态规划");
+
+    /*function sum(arr){
+        function _sum(arr,s,index){
+            if(index >= arr.length) {
+                return 0;
+            }else {
+                var result = 0;
+                s+=arr[index];
+                result = s += _sum(arr,s,index+1);
+                return result;
+            }
+        }
+        return _sum(arr,0,0);
+    }
+    function sum2(arr){
+        var cache = {};  //{ s:xx,index:xx,result:xx}
+        function _sum(arr,s,index){
+            if(index >= arr.length) {
+                return 0;
+            }else {
+                if(cache[index]){
+                    return cache[index];
+                }
+                var result = 0;
+                s+=arr[index];
+                result = s += _sum(arr,s,index+1);
+                cache[index] = result;
+                return result;
+            }
+        }
+        return _sum(arr,0,0);
+    }
+
+    var arr = [];
+    for(var i = 0; i < 4000;i++){
+        arr.push(Math.random()*100)
+    }
+    console.time("test");
+    console.log(sum(arr));
+    console.timeEnd("test");
+    console.time("test2");
+    console.log(sum2(arr));
+    console.timeEnd("test2");*/
+</script>
+</body>
+</html>

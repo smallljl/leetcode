@@ -7,7 +7,7 @@ function prefix_table(pattern,prefix,n){
     if(pattern[i] === pattern[len]){
       len++;
       prefix[i] = len;
-      i++;    
+      i++;  
     }else{
       if(len > 0){
         len = prefix[len - 1];
