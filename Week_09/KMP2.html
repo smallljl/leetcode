@@ -1,0 +1,29 @@
+<script>
+function prefix_table(pattern,prefix,n){
+  prefix[0] = 0;
+  let len = 0;
+  let i = 1;
+  while(i < n){
+    if(pattern[i] === pattern[len]){
+      len++;
+      prefix[i] = len;
+      i++;
+    }else{
+      len = prefix[len - 1];
+    }
+  }
+}
+
+function main(){
+  let pattern  = "ABABCABAA";
+  let prefix = new Array(9);
+  let n = 9;
+  prefix_table(pattern,prefix,n);
+  let i;
+  for(let i = 0; i < n;i++){
+    console.log(prefix[i]);
+  }
+}
+
+main();
+</script>
