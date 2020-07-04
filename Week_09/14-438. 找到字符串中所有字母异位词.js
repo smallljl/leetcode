@@ -37,6 +37,42 @@
  * 
  * 
  */
-var findAnagrams = function(s, p) {
+let s = "cbaebabacd", p="abc";
 
+/**
+ * @description: 不理解 
+ * @param {type} 
+ * @return: 
+ */
+var findAnagrams = function(s, p) {
+      let arrS = s.split("");
+      let arrP = p.split("");
+      let ans = [];  // 接收最后返回的结果
+      let needs = new Array(26).fill(0);  // 定义一个 needs 数组来看 arrP 中包含元素的个数
+      let window = new Array(26).fill(0); // 定义一个 window 数组来看滑动窗口中是否有 arrP 中的元素，并记录出现的个数
+      // 先将 arrP 中的元素保存到 needs 数组中
+      for(let i = 0; i < arrP.length; i++){
+        needs[arrP[i] - 'a'] += 1;
+      }
+      let left = 0;
+      let right = 0;
+      while(right < arrS.length){
+        let curR = arrS[right] - "a";
+        right++;
+        // 将右窗口当前访问到的元素 curR 个数加 1 
+        window[curR] += 1;
+        // 当 window 数组中 curR 比 needs 数组中对应元素的个数要多的时候就该移动左窗口指针 
+        while (window[curR] > needs[curR]) {
+            let curL = arrS[left] - 'a';
+            left++;
+            // 将左窗口当前访问到的元素 curL 个数减 1 
+            window[curL] -= 1;            
+        }
+        // 这里将所有符合要求的左窗口索引放入到了接收结果的 List 中
+        if (right - left == arrP.length) {
+            ans.add(left);
+        }
+      }
+      return ans;
 };
+console.log(findAnagrams(s,p));

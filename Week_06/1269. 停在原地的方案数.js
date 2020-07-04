@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-05-31 20:37:48
- * @LastEditTime: 2020-05-31 20:38:04
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \algorithm008-class02\Week_06\1269. 停在原地的方案数.js
- */ 
-/*
  * 有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。
 
 每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。

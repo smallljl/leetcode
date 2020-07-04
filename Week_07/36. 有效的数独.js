@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-06-02 19:45:41
- * @LastEditTime: 2020-06-02 20:00:50
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \algorithm008-class02\Week_07\36. 有效的数独.js
- */ 
 /*     
  *
  *  判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。
