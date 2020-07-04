@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Node(value) {
+        this.value = value;
+        this.neighbors = [];
+    }
+    /**
+     * 广度优先搜索
+     * @param {*} node
+     * @param {*} targetValue
+     */
+    function searchWide(node, targetValue) {
+        if (!node) {
+        return false;
+    }
+    /**
+     * 查找这一群节点中是否有要找的值
+     * @param {*} nodes 数组
+     */
+    function _search(nodes,targetValue,finded) {
+        if (nodes.length === 0) {
+            return false; //没有东西了
+        }
+        var nexts = []; //我接下来要找的范围
+        // 遍历nodes，看每一个是不是，如果不是，把它邻居加入到一个新数组中
+        for (var i = 0; i < nodes.length; i++) {
+            var n = nodes[i];
+            if (n.value === targetValue) {
+                //找到了
+                return true;
+            }
+            finded.push(n); //加入到找过的节点中
+            //这个节点不是，把它的邻居加入到一个数组中
+            for (var j = 0; j < n.neighbors.length; j++) {
+                if (!nexts.includes(n.neighbors[j])) {
+                    nexts.push(n.neighbors[j]);
+                }
+            }
+        }
+        // 把已经找过的从下一层中删除
+        for (var i = 0; i < nexts.length; i++) {
+            if (finded.includes(nexts[i])) {
+                //已经找过了
+                nexts.splice(i, 1);
+                i--;
+            }
+        }
+        //准备找下一层
+        return _search(nexts,targetValue,finded);
+    }
+    return _search([node],targetValue,[]);
+    }
+    //一群孤立的节点
+    var a = new Node("a");
+    var b = new Node("b");
+    var c = new Node("c");
+    var d = new Node("d");
+    var e = new Node("e");
+    a.neighbors.push(b,c,d);
+    b.neighbors.push(a,d,e);
+    c.neighbors.push(a,e);
+    d.neighbors.push(a,b);
+    e.neighbors.push(b,c);
+    /**
+     * 深度搜索优先
+     * @param node
+     * @param targetValue
+     * @returns {boolean}
+     */
+    function searchDeep(node,targetValue){
+        function _searchDeep(node,targetValue,field){
+            if(!node || field.includes(node.value)) return false;
+            console.log(node,targetValue,field)
+            if(node.value === targetValue){
+                return true;
+            }
+            field.push(node.value);
+            for(var i = 0; i < node.neighbors.length;i++){
+                if(_searchDeep(node.neighbors[i],targetValue,field)){
+                    return true
+                }
+            }
+            return false;
+        }
+        return _searchDeep(node,targetValue,[]);
+    }
+    /**
+     * 广度搜索优先
+     * @param node
+     * @param targetValue
+     * @returns {boolean}
+     */
+    function searchW(node,targetValue){
+        function _searchW(nodes,targetValue,finded){
+            if(!node || nodes.length === 0){
+                return false;
+            }
+            var nexts = [];
+            for(var i = 0; i < nodes.length;i++){
+                var n =  nodes[i];
+                if(n.value === targetValue){
+                    return true;
+                }
+                finded.push(n);
+                for(var j = 0; j < n.neighbors.length;j++){
+                    if(!nexts.includes(n.neighbors[j])){
+                        nexts.push(n.neighbors[j]);
+                    }
+                }
+            }
+            for(var i = 0; i < nexts.length;i++){
+                if(finded.includes(nexts[i])){
+                    nexts.splice(i, 1);
+                    i--;
+                }
+            }
+            return _searchW(nexts,targetValue,finded);
+        }
+        return _searchW([node],targetValue,[]);
+    }
+    // console.log(searchDeep(a,"e"));
+
+    /**
+     * 普雷姆算法
+     * @param nodes
+     * @param sides
+     * @constructor
+     */
+    /*function Prim(nodes,sides){
+        if(nodes.length <= 1 || nodes.length !== sides.length){
+            return;
+        }
+        var hords = [nodes[0]];
+        while (hords.length < nodes.length){
+            _addNodeToHords();
+            console.log(hords.map(it => it.value));
+        }
+        return hords.map(it => it.value);
+
+        function _addNodeToHords(){
+            var result = _chooseNearNodeToHord();
+            result.node.neighbors.push(result.target);
+            result.target.neighbors.push(result.node);
+            hords.push(result.node);
+        }
+
+        /!**
+         * 选一个距离当前部落最近的点
+         * 返回：
+         * {
+         *    node: 到部落最近的点,
+         *    target: 连接到部落的哪个点
+         * }
+         *!/
+        function _chooseNearNodeToHord(){
+            var result = {
+                node:null,
+                target:null,
+                dis:Infinity
+            };
+            for(var i = 0; i < nodes.length; i++){
+                var n = nodes[i];
+                if(hords.includes(n)){
+                    continue;
+                }
+                var temp = _getMinDisToHord(n);
+                console.log(result.dis);
+                if(temp.dis < result.dis){
+                    result.node = n;
+                    result.target = temp.target;
+                    result.dis = temp.dis;
+                }
+            }
+            return result;
+        }
+
+        /!**
+         * 得到指定的点到部落的最短距离，以及目标点
+         * { dis: 到部落的最短距离,  target: 到部落的点}
+         * @param {*} node
+         *!/
+        function _getMinDisToHord(node){
+            var result = {
+                target:hords[0],
+                dis:Infinity
+            };
+            for(var i = 0; i < hords.length;i++){
+                var target = hords[i];
+                var row = nodes.indexOf(node);
+                var col = nodes.indexOf(target);
+                var dis = sides[row][col];
+                if(dis < result.dis){
+                    result.target = target;
+                    result.dis = dis;
+                }
+            }
+            return result;
+        }
+    }*/
+
+    var nodes = [a, b, c, d, e];
+    var sides = [
+        [0, 7, 9, 6, Infinity], // a到其他点的距离
+        [7, 0, Infinity, 8, 4], // b到其他点的距离
+        [9, Infinity, 0, Infinity, Infinity], // c到其他点的距离
+        [6, 8, Infinity, 0, Infinity], // d到其他点的距离
+        [Infinity, 4, 5, Infinity, 0] // e到其他点的距离
+    ];
+    /**
+     * @return {boolean}
+     */
+    function Prime(nodes,sides){
+        if(nodes.length === 0 || nodes.length !== sides.length){
+            return false;
+        }
+        var hords = [nodes[0]];
+        while(hords.length < nodes.length){
+            _addHord();
+            console.log(hords.map(i => i.value));
+        }
+        function _addHord(){
+            var result = _choose();
+            result.node.neighbors.push(result.target);
+            result.target.neighbors.push(result.node);
+            hords.push(result.node);
+        }
+        function _choose(){
+            var result = {
+                node:null,
+                target:null,
+                dis:Infinity
+            };
+            for(var i = 0; i < nodes.length; i++){
+                if(hords.includes(nodes[i])){
+                    continue;
+                }
+                var node = nodes[i];
+                var temp = _getMinToHord(node);
+                if(temp.dis < result.dis){
+                    result.dis = temp.dis;
+                    result.node = node;
+                    result.target = temp.target;
+                }
+            }
+            return result;
+        }
+        function _getMinToHord(node){
+            var result = {
+                target:hords[0],
+                dis:Infinity
+            };
+            for(var i = 0; i < hords.length;i++){
+                var target = hords[i];
+                var row = nodes.indexOf(node);
+                var col = nodes.indexOf(target);
+                var dis = sides[row][col];
+                if(dis < result.dis){
+                    result.dis = dis;
+                    result.target = target;
+                }
+            }
+            return result;
+        }
+    }
+    console.log(Prime(nodes, sides));
+</script>
+<script>
+</script>
+</body>
+</html>

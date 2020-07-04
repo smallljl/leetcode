@@ -24,7 +24,7 @@
 *
 */
 var reverseBits = function(n) {
-  // 10100000   001000000     
+  // 123    0 * 10      
   let result = 0;
   // result从右往移动空出末位 + n从左往右移动获取末位 + n次 = 倒序
   for(let i = 0;i < 32;i++){
