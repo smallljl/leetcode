@@ -1,0 +1,18 @@
+<script>
+  function buildMatch(pattern){
+    let m = pattern.length;
+    let i ,j ;
+    let match = new Array(m).fill(-1);
+    for(let i = 1; i < m;i++){
+      j = match[i-1];    // 前一个匹配
+      while((i>=0) && (pattern[j+1] !== pattern[i]))
+        j = match[j];
+      if(pattern[j+1] === pattern[i])
+        match[j] = i + 1;
+       else 
+        match[j] = -1;
+    }
+    return match;
+  }
+
+</script>
