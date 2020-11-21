@@ -41,7 +41,6 @@ var fourSum = function(nums, target) {
          }
       }
       return res;
-      res.map(item=>console.log(item));
 };
 
 let gen = (nums,target)=>{
