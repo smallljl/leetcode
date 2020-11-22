@@ -28,7 +28,7 @@
 
    var moveZeroes1 = function(nums){
        let count = 0;
-       for(let i = 0;i < nums.length;i++){
+       for(let i = 0;i < nums.length;i++) {
            if(nums[i] === 0){
                nums.splice(i,1);
                i--;
