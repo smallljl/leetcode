@@ -14,7 +14,7 @@
 //     let max = 0;
 //     for(let i = 0; i < height.length-1;++i){
 //         for(let j = i+1;j < height.length;j++){
-//             let area = (j-i)*Math.min(height[i],height[j]);
+//             let area = (j-i)*Math.min(height[i],height[j]);  // 宽 x 高
 //             max = Math.max(max, area);
 //         }
 //     }
