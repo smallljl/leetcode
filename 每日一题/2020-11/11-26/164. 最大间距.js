@@ -29,6 +29,8 @@ var maximumGap = function(nums) {
     return max;
 };
 
+
+// 最大间距 >= (max -min ) / (n - 1) 
 var maximumGap = function(nums){
     const n = nums.length;
     if (n < 2) {
