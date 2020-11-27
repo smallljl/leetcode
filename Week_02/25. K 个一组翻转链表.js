@@ -20,3 +20,32 @@ k 是一个正整数，它的值小于或等于链表的长度。
 链接：https://leetcode-cn.com/problems/reverse-nodes-in-k-group
 * 
 */
+
+// 链表反转
+function reverse(head,tail){
+    let prev = null,next = null;
+    while(head != tail){
+        // 下一个节点
+        next = head.next;
+        head.next = prev;
+        prev = head; // 保存前一个
+        head = next;  // 后移一位
+    }
+    return prev
+}
+
+var reverseKGroup = function(head, k) {
+    if(head == null || head.next == null) return head;
+
+    let tail = head;
+
+    for(let i = 0; i < k; i++){
+        if(tail == null) return head;
+        tail = tail.next;
+    }
+
+    let newHead = reverse(head,tail); // [head,tail)
+    head.next = reverseKGroup(tail, k);  // tail = head
+
+    return newHead;
+};
