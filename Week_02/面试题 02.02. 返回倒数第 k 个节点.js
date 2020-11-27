@@ -16,7 +16,7 @@
 var kthToLast = function(head, k) {
     let left = head;
     let right = head;
-    while(k-->0){
+    while(k-->0){ 
         right = right.next;
     }
     while(right !== null){
