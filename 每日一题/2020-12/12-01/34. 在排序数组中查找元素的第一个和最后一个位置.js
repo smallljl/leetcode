@@ -65,3 +65,40 @@ var searchRange = function(nums, target) {
     midL = _searchR(0,midR-1,target-1);
     return [midL+1,midR];
 };
+
+
+var searchRange = function(nums, target) {
+    let mid,start,end;
+    // 二分查找找右边 
+    function _searchR(nums,target){
+        let left = 0,right = nums.length -1;
+        let index = -1;
+        while(left <= right){
+            mid = (left + right) >> 1;
+            if(nums[mid] <= target) left = mid + 1;
+            else right = mid - 1;
+            if(nums[mid] === target){
+                index = mid;
+            }
+        }
+        return index;
+    }
+
+    function _searchL(nums,target){
+        let left = 0, right = nums.length - 1;
+        let index = -1;
+        while(left <= right){
+            mid = (left + right) >> 1;
+            if(nums[mid] >= target) right = mid - 1;
+            else left = mid + 1;
+            if(nums[mid] === target){
+                index = mid;
+            }
+        }
+        return index;
+    }
+    
+    start = _searchL(nums,target)
+    end = _searchR(nums,target)
+    return [start,end];
+};
