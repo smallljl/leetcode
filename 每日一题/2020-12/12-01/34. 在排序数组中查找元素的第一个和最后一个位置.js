@@ -46,3 +46,22 @@ var searchRange = function(nums, target) {
     }
     return [start,end];
 };
+
+var searchRange = function(nums, target) {
+    let mid,midL,midR;
+    // 二分查找找右边 
+    function _searchR(left, right, target){
+        while(left <= right){
+            mid = (left + right) >> 1;
+            if(nums[mid] <= target) left = mid + 1;
+            else right = mid - 1;
+        }
+        return right;
+    }
+    midR = _searchR(0,nums.length-1,target);
+
+    if(midR < 0 || nums[midR] !== target) return [-1,-1];
+
+    midL = _searchR(0,midR-1,target-1);
+    return [midL+1,midR];
+};
