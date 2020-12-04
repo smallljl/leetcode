@@ -55,12 +55,13 @@ class Heap {
     if (n <= 1) {
       return iArr
     } else {
+      // 从最后一个父节点开始
       for (let i = Math.floor(n / 2); i >= 0; i--) {
         Heap.maxHeapify(iArr, i, n);
       }
       for (let j = 0; j < n; j++) {
-        Heap.swap(iArr, 0, n - 1 - j);
-        Heap.maxHeapify(iArr, 0, n - 1 - j - 1);
+        Heap.swap(iArr, 0, n - 1 - j); // 交换
+        Heap.maxHeapify(iArr, 0, n - 1 - j - 1); 
       }
       return iArr
     }
@@ -81,7 +82,7 @@ class Heap {
     return str.join('')
   }
   // 交换两个元素
-  static swap (arr, a, b) {
+  static swap (arr, a, b) { 
     if (a === b) {
       return
     }
@@ -105,10 +106,10 @@ class Heap {
       largest = r
     }
     if (largest !== i) {
-      Heap.swap(Arr, i, largest);
+      Heap.swap(Arr, i, largest);  // 交换值
       Heap.maxHeapify(Arr, largest, size);
     }
-  }
+  } 
 }
 
 export default Heap
