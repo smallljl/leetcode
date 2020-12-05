@@ -46,11 +46,3 @@ var permute = function(nums) {
     dfs(sublist,0,used);
     return list;
 };
-
-/**
- * 广度搜索优先
- */
-
-var permute1 = function(){
-
-};
