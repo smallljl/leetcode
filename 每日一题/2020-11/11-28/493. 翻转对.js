@@ -16,3 +16,40 @@
  * 
  * 
  */
+var reversePairs = function(nums) {
+   let count = 0;
+   let mergeArr = (left,right) => {
+         let result = [];
+         let left_i = 0;
+         let right_j = 0;
+         let tmpI = 0,tmpJ = 0;
+         while(tmpI < left.length && tmpJ < right.length){
+            if(left[tmpI]/2 > right[tmpJ]){
+               count += left.length - tmpI;
+               tmpJ++;
+            }else{
+               tmpI++;
+            }
+         }
+         while(left_i < left.length && right_j < right.length){
+            if(left[left_i] < right[right_j]){
+               result.push(left[left_i++]);
+            }else{
+               result.push(right[right_j++]);
+            }
+         }
+         return [...result,...left.slice(left_i),...right.slice(right_j)];
+   }
+
+   let mergeSort = (arr)=>{
+      if(arr.length <= 1){
+            return arr;
+      }
+      let mid = arr.length >> 1;
+      let left = arr.slice(0,mid);
+      let right = arr.slice(mid);
+      return mergeArr(mergeSort(left),mergeSort(right));
+   }
+   mergeSort(nums);
+   return count;
+};
