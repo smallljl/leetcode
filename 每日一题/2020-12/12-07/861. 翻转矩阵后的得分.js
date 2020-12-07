@@ -20,6 +20,26 @@
 
  * 
  */
+// 贪心算法  先翻转行再翻转列
 var matrixScore = function(A) {
-
+   let m = A.length, n = A[0].length;
+   let result = 0;
+   for(let i = 0; i < m; i ++){
+       if(A[i][0] === 0){ //  如果i行以0开头
+           // 行翻转
+           for(let j = 0; j < n; j ++){
+               A[i][j] ^= 1;   
+           }
+       }
+   }
+   for(let j = 0; j < n; j++){
+       let cnt = 0;
+       // 统计第j列有多少个1;
+       for(let i = 0; i < m; i++){
+           cnt += A[i][j];
+       }
+       // max(cnt, m - cnt) 表示这个位置最多有多少个 1。 1<<(n-j-1) 表示这个位置的1的大小。
+       result += Math.max(cnt, m - cnt) * (1 << (n - j - 1));
+   }
+   return result;
 };
