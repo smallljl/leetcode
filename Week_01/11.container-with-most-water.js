@@ -10,16 +10,16 @@
  * @return {number}
  */
 // 枚举  O(n^2)
-// var maxArea = function(height) {
-//     let max = 0;
-//     for(let i = 0; i < height.length-1;++i){
-//         for(let j = i+1;j < height.length;j++){
-//             let area = (j-i)*Math.min(height[i],height[j]);
-//             max = Math.max(max, area);
-//         }
-//     }
-//     return max;
-// };
+var maxArea = function(height) {
+    let max = 0;
+    for(let i = 0; i < height.length-1;++i){
+        for(let j = i+1;j < height.length;j++){
+            let area = (j-i)*Math.min(height[i],height[j]);
+            max = Math.max(max, area);
+        }
+    }
+    return max;
+};
 
 // O(n) 左右边界同时向中间收敛  *****
 var maxArea = function(a){
