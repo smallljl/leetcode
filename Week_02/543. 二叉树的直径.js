@@ -27,3 +27,16 @@
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/diameter-of-binary-tree
 */
+var diameterOfBinaryTree = function(root) {
+    var traverse = node => {
+        if (!node) {
+            return 0;
+        }
+        let left = traverse(node.left);
+        let right = traverse(node.right);
+        res = Math.max(res, left + right);
+        return Math.max(left, right) + 1;
+    };
+    traverse(root);
+    return res;
+}

@@ -23,6 +23,44 @@ var threeSum1 = function(nums) {
     return res;
 };
 
+//三数求并排序
+var threeSum = function(nums) {
+    let res = [];
+    let set = new Set();
+    for(let i = 0; i < nums.length - 2; i ++){
+        for(let j = i+1; j < nums.length - 1; j++){
+            for(let k = j+1; k < nums.length; k++ ){
+                if(nums[i] + nums[j] + nums[k] === 0){
+                    let item = [nums[i],nums[j],nums[k]].sort((a,b)=>{
+                        if( a < 0 && b < 0){
+                            return -(Math.abs(a) - Math.abs(b));
+                        } 
+                        return a - b;
+                    });  // 排序
+                    let key = item.join(""); 
+                    if(!set.has(key)){
+                        set.add(key);
+                        res.push(item);
+                    }
+                }
+            }
+        }    
+    }
+    res.sort((a,b)=>{
+        if(a[0] != b[0]){
+            return a[0] - b[0];
+        } else {
+            if(a[1] != b[1]){
+                return a[1] - b[1];
+            } else {
+                return a[2] - b[2];
+            }
+        }
+    });
+    return res;
+};
+
+
 // map优化
 var threeSum2 = function(nums){
     let res = [];

@@ -60,3 +60,17 @@ var reverseList2 = function(root){
     }
     return _reverse(root);
 };
+
+
+
+// 尾递归求解
+function reverse(prev, curr){
+    if(!curr) return prev;
+    let temp = curr.next;
+    curr.next = prev;
+    return reverse(curr,temp)
+}
+
+var reverseList = function(head) {
+    return reverse(null,head);
+};
