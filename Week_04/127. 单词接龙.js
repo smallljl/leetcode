@@ -73,7 +73,7 @@ function ladder(beginWord,endWord,wordList){
         }
         for(let i = 0; i < wordList.length;i++){
             if(diff(wordList[i],item.word) === 1 && !item.used[i]){
-                let newUsed = [...item.used]
+                let newUsed = [...item.used];
                 newUsed[i] = true;
                 queue.push({word:wordList[i],used:newUsed,level:item.level+1});
             }
@@ -92,7 +92,7 @@ function ladder(beginWord,endWord,wordList){
 }
 
 
-// BFS  next[]  保存下一层的值
+// BFS  next[]  保存下一层的值  保存下一层的值
 function ladderLength2(beginWord,endWord,wordList){
    let queue = [beginWord];
    let step = 1;
@@ -100,15 +100,15 @@ function ladderLength2(beginWord,endWord,wordList){
        let next = [];
        for(let word of queue){
            for(let i = 0; i < word.length;i++){
-               let temp = word.substr(0,i)+word.substr(i+1);
+               let temp = word.substr(0,i)+word.substr(i+1);  // 单词取任意两个
                for(let j = 0; j < wordList.length;j++){  // 
-                   let check = wordList[j].substr(0,i)+wordList[j].substr(i+1);
+                   let check = wordList[j].substr(0,i)+wordList[j].substr(i+1);  // 列表单词取任意两个
                    if(temp === check){
                        if(wordList[j] === endWord){
-                           return step+1;
+                           return step+1;  
                        }
                        next.push(wordList[j]);
-                       wordList.splice(j,1);
+                       wordList.splice(j,1);  // 当个依据使用了
                        j--;
                    }
                }
