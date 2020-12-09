@@ -37,14 +37,14 @@ var ladderLength = function(beginWord, endWord, wordList) {
     let min = Infinity;
     function backtracing(start,end,bank,used,count){
         if(start === end){
-            min = Math.min(min,count+1);
+            min = Math.min(min,count+1);  // 能够匹配到就break;
             return;
         }
         for(let i = 0; i < bank.length; i ++){
             if(!used[i] && diff(start,bank[i]) === 1){
-                used[i] = true;
-                backtracing(bank[i],end,bank,used,count+1);
-                used[i] = false;
+                used[i] = true;  // 当前这个使用了
+                backtracing(bank[i],end,bank,used,count+1);  // 下一层
+                used[i] = false; // 没有使用
             }
         }
     }       
@@ -57,7 +57,7 @@ var ladderLength = function(beginWord, endWord, wordList) {
         }
         return d;
     }
-    backtracing(start,end,bank,[],0);
+    backtracing(start,end,wordList,[],0);
     return min === Infinity ? 0 : min;
 };
 

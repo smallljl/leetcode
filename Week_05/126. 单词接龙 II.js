@@ -93,7 +93,7 @@ let ladderL = function(beginWord,endWord,wordList){
             }
         }
     }
-    console.log(res);
+    return res;
 }
 
 let beginWord = "hit";
