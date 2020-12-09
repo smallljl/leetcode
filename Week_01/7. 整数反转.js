@@ -25,3 +25,6 @@ var reverse = function(x) {
         return now < Math.pow(2,31) ? now : 0;
 };
 console.log(reverse(1534236469));
+
+now = now * 10 + (ord % 10);
+ord = Math.floor(ord / 10)
