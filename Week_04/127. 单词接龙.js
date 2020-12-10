@@ -173,6 +173,9 @@ let ladderL = function(beginWord,endWord,wordList){
             comboDict[newWord].push(wordList[i]);
         }
     }
+
+    // abc 
+    // { a*c: abc }  // 存储
     let queue = [[beginWord,1]];
     let visited = {beginWord:true};
     while(queue.length){
