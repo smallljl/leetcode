@@ -252,3 +252,60 @@ let ladderL2 = function(beginWord,endWord,wordList){
     }
     return 0;
 }
+
+
+// 过不了
+var ladderLength = function(beginWord, endWord, wordList) {
+    if(!endWord || wordList.indexOf(endWord) === -1) return 0;
+    let comboDict = {};
+    let len = beginWord.length;
+    for(let i = 0; i < wordList.length;i++){
+        for(let r = 0; r < len; r++){
+            let newWord = wordList[i].substr(0,r)+"*"+wordList[i].substr(r+1,len);
+            if(!comboDict[newWord]){
+                comboDict[newWord] = [];
+            }
+            comboDict[newWord].push(wordList[i]);
+        }
+    }  
+  
+    function visitWord(currQueue,currVisited,otherVisited){
+        let currentNode = currQueue.shift();
+        let currentWord = currentNode[0];
+        let currentLevel = currentNode[1];
+        for(let i = 0; i < len;i++){
+            let newWord = currentWord.substr(0,i) + "*" + currentWord.substr(i+1,len);
+            if(newWord in comboDict){
+                let tmpWords = comboDict[newWord];
+                for(let j = 0; j < tmpWords.length;j++){
+                    if(otherVisited[tmpWords[j]]){
+                        return currentLevel + othersVisited[tmpWords[j]];
+                    }
+                    if(!currVisited[tmpWords[j]]){
+                        currVisited[tmpWords[j]] = currentLevel + 1;
+                        currQueue.push([tmpWords[j],currentLevel + 1]);
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    let queueBegin = [[beginWord,1]];
+    let queueEnd = [[endWord,1]];
+    let visitedStart = {};
+    visitedStart[beginWord] = 1;
+    let visitedEnd = {};
+    visitedEnd[endWord] = 1;
+
+    while(queueBegin.length > 0 && queueEnd.length > 0){
+        let ans = visitWord(queueBegin,visitedStart,visitedEnd);
+        if(ans > - 1) return ans;
+        ans = visitWord(queueEnd,visitedEnd,visitedStart);
+        if(ans > -1) return ans;
+    }
+
+    return 0;
+
+
+  };
