@@ -254,7 +254,7 @@ let ladderL2 = function(beginWord,endWord,wordList){
 }
 
 
-// 过不了
+// 奥里给
 var ladderLength = function(beginWord, endWord, wordList) {
     if(!endWord || wordList.indexOf(endWord) === -1) return 0;
     let comboDict = {};
