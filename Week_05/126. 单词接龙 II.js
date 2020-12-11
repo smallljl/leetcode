@@ -34,10 +34,6 @@
 
     输出: []
 
-    解释: endWord "cog" 不在字典中，所以不存在符合要求的转换序列。
-
-    来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/word-ladder-ii
  * 
  * 
  * 
