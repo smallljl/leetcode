@@ -44,114 +44,69 @@
  * 
  * 
  */
-// 解法一：BFS   有bug 好需测试
-let ladderL = function(beginWord,endWord,wordList){
-    if(!endWord || wordList.indexOf(endWord) === -1) return 0;
-    // 各个通用状态对应所有单词   abc ===> 对应得所有状态 a*b *ab 
-    let comboDict = {};
-    let len = beginWord.length;
-    for(let i = 0; i < wordList.length; i ++){
-        for(let r = 0; r < len; r++){
-            let newWord = wordList[i].substr(0,r)+"*"+wordList[i].substr(r+1,len);  // a*b  其中的两个  
-            if(!comboDict[newWord]){
-                comboDict[newWord] = [];
-            }
-            comboDict[newWord].push(wordList[i]);
-        }
-    }
-    let queue = [[beginWord,1,[beginWord]]];
-    let visited = {beginWord:true};
-    let res = [];
-    while(queue.length){    
-        let currentNode = queue.shift();
-        let currentWord = currentNode[0];
-        let currentLevel = currentNode[1];
-        let currentRes = currentNode[2];
-        for(let i = 0; i < len; i++){
-            let newWord = currentWord.substr(0,i)+"*"+currentWord.substr(i+1,len);
-            // 新的word在字典里
-            if(newWord in comboDict){
-                let tempWords = comboDict[newWord];
-                for(let j = 0;j<tempWords.length;j++){
-                    if(tempWords[j] === endWord){   // 找到    // ["si","go","se","mr","pa","sa","he","lr","sq","ye"]
-                        currentRes.push(endWord);
-                        if(!res.length) {
-                            res.push(currentRes)
-                        } else if(currentLevel+1 < res[0].length){
-                            res.length = 0;
-                            res.push(currentRes)
-                        } else if(currentLevel+1 === res[0].length){
-                            res.push(currentRes);
-                        }
-                        continue;
-                    }
-                    if(!visited[tempWords[j]]){  // wordList中的一个   // 第一次访问了  下次访问次数比第一次的次数多   所以可能排除掉
-                        visited[tempWords[j]] = true; // 表示访问过了
-                        queue.push([tempWords[j],currentLevel+1,currentRes.concat(tempWords[j])]);
-                    }
+
+const findLadders = (beginWord,endWord, wordList) => {
+    const wordSet = new Set(wordList);
+    wordSet.add(beginWord);
+    if(!wordSet.has(endWord)) return [];
+
+    const levelMap = new Map();            // 存放图中的单词
+    const wordMap = new Map();            
+    const visited = new Set();
+    const queue =  [beginWord];;
+    visited.add(beginWord);
+
+    let finished = false;
+    let level = 0;
+    levelMap.set(beginWord,0);
+
+    while(queue.length){
+        const levelSize = queue.length;
+        level++;
+        for(let i = 0; i < levelSize; i++){
+
+            const word = queue.shift();   // 当前出列的单词
+            for(let i = 0; i < word.length; i++){
+                for(let c = 97; c <= 122; c++){
+                    const newWord = word.slice(0,i) + String.fromCharCode(c) + word.slice(i+1);
+                    if(!wordSet.has(newWord)) continue;
+                    if(wordMap.has(newWord))
+                        wordMap.get(newWord).push(word);
+                    else 
+                        wordMap.set(newWord,[word]);
+    
+                    if(visited.has(newWord)) continue;
+                    if(newWord === endWord)
+                        finished = true;                 
+                    
+                    levelMap.set(newWord,level);
+                    queue.push(newWord);
+                    visited.add(newWord);
                 }
             }
         }
     }
+
+    if(!finished) return [];
+
+    const res = [];
+    const dfs = (path,beginWord,word) => {
+        if(word === beginWord){
+            res.push([beginWord,...path]);
+            return;
+        }
+
+        path.unshift(word);
+        if(wordMap.get(word)){
+            for(const parent of wordMap.get(word)){
+                if(levelMap.get(parent) + 1 === levelMap.get(word)){
+                    dfs(path,beginWord,parent);
+                }
+            }
+        }
+        path.shift();
+    }
+
+    dfs([],beginWord,endWord);
     return res;
-}
-
-let beginWord = "hit";
-let endWord = "cog";
-let wordList =["hot","dot","dog","lot","log"]
-console.log(ladderL(beginWord, endWord, wordList));
-
-
-
-// 未理解
-var findLadders = function(beginWord, endWord, wordList) {
-    let wordSet = new Set(wordList);
-    if (!wordSet.has(endWord)) return [];
-    wordSet.delete(beginWord);
-    let beginSet = new Set([beginWord]);
-    let map = new Map();
-    let distance = 0;
-    let minDistance = 0;
-    while(beginSet.size) {
-        if (beginSet.has(endWord)) break;
-        let trySet = new Set();
-        for (let word of beginSet) {
-            let mapSet = new Set();
-            for (let i = 0; i < word.length; i++) {
-                for (let j = 0; j < 26; j++) {
-                    let tryWord = word.slice(0, i) + String.fromCharCode(97 + j) + word.slice(i + 1);
-                    if (!minDistance && tryWord === endWord) minDistance = distance + 1;
-                    if (wordSet.has(tryWord)) {
-                        trySet.add(tryWord);
-                        mapSet.add(tryWord);
-                    }
-                }
-            }
-            map.set(word, mapSet);
-        }
-        distance++;
-        for (let w of trySet) {
-            wordSet.delete(w);
-        }
-        beginSet = trySet;
-    }
-    let ans = [];
-    let path = [beginWord];
-    dfs(beginWord, endWord, ans, path, map, minDistance, 0);
-    return ans;
-};
-
-function dfs (beginWord, endWord, ans, path, map, minDistance, distance) {
-    if (distance > minDistance) return ;
-    if (beginWord === endWord) {
-        ans.push(path.slice());
-    }
-    let words = map.get(beginWord)
-    if (words) {
-        for (let word of words) {
-            path.push(word)
-            dfs(word, endWord, ans, path, map, minDistance, distance + 1);
-            path.pop();
-        }
-    }
 }
