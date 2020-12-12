@@ -54,7 +54,7 @@ var minMutation1 = function(start, end, bank) {
         return d;
     }
     backtracing(start,end,bank,[],0);
-    return min;
+    return min === Infinity ? -1 : min;
 };
 let start = "AACCGGTT";
 let end =  "AAACGGTA";
@@ -75,6 +75,7 @@ function minMutation2(start, end, bank){
         }
         for(let i = 0; i < start.length;i++){
             for(let j = 0; j < choose.length;j++){
+                // 基因变化是否存在bank中
                 let d = start.slice(0,i) + choose[j] + start.slice(i+1);
                 if(!checkset.has(d) && bankSet.has(d)){
                     checkset.add(d);
