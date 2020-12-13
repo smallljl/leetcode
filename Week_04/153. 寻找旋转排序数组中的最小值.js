@@ -15,15 +15,12 @@
 
     输入: [4,5,6,7,0,1,2]
     输出: 0
-
-    来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array
- */
+*/
 var findMin = function(nums) {
     let left = 0;
     let right = nums.length - 1;
     while(left < right){
-        let mid = (right+left) >> 1;
+        let mid = left + (right - left) >> 1;
         if(nums[mid] > nums[right])         
             left = mid + 1;
         else                                 
