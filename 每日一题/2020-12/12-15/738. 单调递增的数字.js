@@ -34,7 +34,7 @@ var monotoneIncreasingDigits = function(N) {
             for(let j = i+1; j < strN.length; j++){
                 strN[j] = "9";
             }
-            i=-1;
+            i-=2;
         }
     }
     return Number(strN.join(""));
