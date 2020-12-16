@@ -15,6 +15,7 @@
     链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock
 *
 */ 
+
 var maxProfit = function(prices) {
     let len = prices.length;
     let minprice = Infinity;
@@ -28,3 +29,23 @@ var maxProfit = function(prices) {
     }
     return maxprofit;
 };
+
+var maxProfit = function(prices){
+    let len = prices.length;
+    if(len < 2){
+        return 0;
+    }
+    let dp = new Array(len);   // m 行  
+    for(let i = 0; i < len; i++){ // 
+       dp[i] = new Array(2); 
+    }
+    // dp[i][0] 下标为 i 这天结束的时候，不持股，手上拥有的现金数
+    // dp[i][1] 下标为 i 这天结束的时候，持股，手上拥有的现金数
+    dp[0][0] = 0;
+    dp[0][1] = - prices[0];
+    for (let i = 1; i < len; i++) {
+        dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+        dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+    }
+    return dp[len - 1][0];
+}
