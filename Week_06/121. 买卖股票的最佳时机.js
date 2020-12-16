@@ -16,5 +16,15 @@
 *
 */ 
 var maxProfit = function(prices) {
-
+    let len = prices.length;
+    let minprice = Infinity;
+    let maxprofit = 0;
+    for(let i = 0; i < len; i ++){
+        if(prices[i] < minprice){
+            minprice = prices[i];
+        } else if(prices[i] - minprice > maxprofit){
+            maxprofit = prices[i] - minprice;
+        }
+    }
+    return maxprofit;
 };
