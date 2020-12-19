@@ -37,7 +37,7 @@
  */ 
 var fib = function(N) {
     if(N <= 1 )
-        return N
+        return N;
     let prev = 0,curr = 1;
     for(let i = 2;i <= N;i++){
         let next = prev + curr;
