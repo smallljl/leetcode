@@ -29,3 +29,27 @@
  * 
  */ 
  
+ /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var rob = function(nums) {
+
+   if(!nums.length) return 0;
+   let len = nums.length;
+   if(len === 1) return nums[0];
+   if(len === 2) return Math.max(nums[0],nums[1]);
+   return Math.max(_rob(nums,0,len-2),_rob(nums,1,len-1));
+
+   function _rob(nums,start,end){
+       let pre1 = 0;
+       let pre2 = 0;
+       let curMax = 0;
+       for (let i = start; i <= end; i++) {
+           curMax = Math.max(pre1 , pre2 + nums[i]);
+           pre2 = pre1;
+           pre1 = curMax;
+       }
+       return curMax;
+   }
+};
