@@ -15,6 +15,30 @@
     来源：力扣（LeetCode）
     链接：https://leetcode-cn.com/problems/maximal-square
  */ 
-var maximalSquare = function(matrix) {
 
+ /**
+ * @param {character[][]} matrix
+ * @return {number}
+ */
+var maximalSquare = function(matrix) {
+    if(!matrix || !matrix.length) return 0;
+    let rows = matrix.length;
+    let cols = matrix[0].length;
+    let dp = [];
+    for(let i = 0; i < rows; i++){
+        dp[i] = new Array(cols).fill(0);
+    }
+    let max = 0;
+    for(let i = 0; i < rows; i++){
+        for(let j = 0; j < cols; j++){
+            if(matrix[i][j] === "0" || !i || !j ){
+                dp[i][j] = matrix[i][j] - '0' 
+            } else {
+                // 左边 右边 左上方 最小值   + 1
+                dp[i][j] = Math.min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1]) + 1;
+            }
+            max = Math.max(max,dp[i][j]);
+        }
+    }
+    return max**2;
 };

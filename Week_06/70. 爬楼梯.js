@@ -97,7 +97,6 @@ var climbStairs3 = function(n){
         if(n === 0){
             return 1;
         }
-        
         // 剪枝
         return _climbStairs(n-1,1) + _climbStairs(n-2) + _climbStairs(n-3);
     }

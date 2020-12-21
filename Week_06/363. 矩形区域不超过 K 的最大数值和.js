@@ -7,8 +7,6 @@
     输出: 2 
     解释: 矩形区域 [[0, 1], [-2, 3]] 的数值和是 2，且 2 是不超过 k 的最大数字（k = 2）。
 
-    来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/max-sum-of-rectangle-no-larger-than-k
  *
  */ 
 var maxSumSubmatrix = function(matrix, k) {
