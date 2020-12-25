@@ -23,6 +23,35 @@
  * 
  *
  */ 
+/**
+ * @param {number} n
+ * @return {number}
+ */
 var checkRecord = function(n) {
+   let ans = [];
+   let arr = ["P","A","L"]
+   function _check(str){
+      let count = 0;
+      for(let i = 0; i < str.length && count < 2; i++){
+         if(str[i] === "A"){
+            count++;
+         }
+      }
+      return str.length > 0 && count < 2 && str.indexOf("LLL") < 0; 
+   }
 
+   function _checkRecord(level,str){
+      if(level === n){
+         if(_check(str))
+            ans.push(str);
+         return;
+      }
+      for(let i = 0; i < arr.length; i++){
+         let item = arr[i];
+         // 不能有连续两个L
+         _checkRecord(level+1,str+item);
+      }
+   }
+   _checkRecord(0,"");
+   return ans.length;
 };
