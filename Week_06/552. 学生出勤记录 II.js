@@ -23,6 +23,8 @@
  * 
  *
  */ 
+
+
 /**
  * @param {number} n
  * @return {number}
@@ -41,7 +43,7 @@ var checkRecord = function(n) {
    }
 
    function _checkRecord(level,str){
-      if(level === n){
+      if(level === n  ){
          if(_check(str))
             ans.push(str);
          return;
@@ -53,5 +55,35 @@ var checkRecord = function(n) {
       }
    }
    _checkRecord(0,"");
+   return ans.length;
+};
+
+/**
+ * 剪枝
+ * @param {number} n
+ * @return {number}
+ */
+var checkRecord = function(n) {
+   let ans = [];
+   let arr = ["P","A","L"]
+   function _checkRecord(level,Acount,Lcount,str){
+      if(level === n){
+         ans.push(str);
+         return;
+      }
+      for(let i = 0; i < arr.length; i++){
+         let item = arr[i];
+         if(item === "A"){
+            if(Acount === 1) continue
+            _checkRecord(level+1,Acount+1,0,str+item);
+         } else if(item === "P")
+            _checkRecord(level+1,Acount,0,str+item);
+         else {
+            if(Lcount === 2) continue;
+            _checkRecord(level+1,Acount,1,str+item);
+         }
+      }
+   }
+   _checkRecord(0,0,0,"");
    return ans.length;
 };
