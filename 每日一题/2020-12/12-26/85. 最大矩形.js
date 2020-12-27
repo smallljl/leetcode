@@ -74,23 +74,4 @@ function maxRec(grid,bottom){
        maxarea = Math.max(maxarea,grid[bottom][stack.pop()] * (grid[bottom].length - stack[stack.length-1] - 1));
    }
    return maxarea;
-
-   // let stack = [];
-   // stack.push(-1);
-   // let curIndex = 0;
-   // let max = 0;
-   // console.log(grid)
-   // while(curIndex < grid[bottom].length){
-   //     while(stack[stack.length-1] !== -1 && grid[bottom][curIndex] <= grid[bottom][stack.length-1]){
-   //         max = Math.max(max,grid[bottom][stack.pop()] * (curIndex - stack[stack.length-1] -1) )
-   //     }
-   //     stack.push(curIndex);
-   //     curIndex++;
-   // }
-    
-   // while(stack[stack.length-1] !== -1){
-   //     max = Math.max(max, grid[bottom][stack.pop()] * (grid[bottom].length - stack[stack.length-1] -1 ))
-   // }
-   // // console.log(max)
-   // return max;
 }
