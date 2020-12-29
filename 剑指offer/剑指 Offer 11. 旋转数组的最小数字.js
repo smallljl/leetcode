@@ -16,21 +16,21 @@
  */
 
  /**
- * @param {number[]} numbers
+ * @param {number[]} nums
  * @return {number}
  */
-var minArray = function(numbers) {
-    let n = numbers.length-1;
-    if(n < 0) return -1;
-    while(n > 0 && numbers[n] == numbers[0]) n--;
-    let l = 0, r = n;
-    while(l < r){
-        const mid = l + r >>> 1;
-        if(numbers[mid] > numbers[r]){
-            l = mid + 1;
+var minArray = function(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+    while (left < right) {
+        const mid = left + right >> 1;
+        if (nums[mid] > nums[right]) {
+            left = mid + 1;
+        } else if (nums[mid] == nums[right]) {
+            right--;
         } else {
-            r = mid;
+            right = mid;
         }
     }
-    return numbers[l];
+    return nums[left];
 };
