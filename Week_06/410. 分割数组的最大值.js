@@ -21,13 +21,40 @@
     其中最好的方式是将其分为[7,2,5] 和 [10,8]，
     因为此时这两个子数组各自的和的最大值为18，在所有情况中最小。
 
-    来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/split-array-largest-sum
- *
  * 
  * 
  * 
  */ 
+/**
+ * @param {number[]} nums
+ * @param {number} m
+ * @return {number}
+ */
 var splitArray = function(nums, m) {
+   let len = nums.length;
+   let dp = new Array(len);
+   for(let i = 0 ; i < len ; i++){
+       dp[i] = new Array(m+1).fill(Infinity);
+   }
+   // 前缀和
+   let sub = new Array(len).fill(0);
+   sub[0] = nums[0];
+   for(let i = 1; i < len; i++){
+       sub[i] = sub[i-1] + nums[i];
+   }
 
+   // 将前i个元素划分为1组
+   for(let i = 0; i < len; i++){
+       dp[i][1] = sub[i];   // 前i个元素划分1块
+   }
+
+   for(let i = 2; i <= m; i++){  // 划分块数
+       for(let j = i-1; j < len; j++){
+           for(let k = 0; k < j; k++){
+               // 0 - j 分i块  0-k i-1块 + k-j 1块的值
+               dp[j][i] = Math.min(dp[j][i], Math.max(dp[k][i-1],sub[j] - sub[k]));
+           }
+       }
+   }
+   return dp[len-1][m];
 };

@@ -25,20 +25,60 @@
     返回 true。即青蛙可以成功过河，按照如下方案跳跃： 
     跳1个单位到第2块石子, 然后跳2个单位到第3块石子, 接着 
     跳2个单位到第4块石子, 然后跳3个单位到第6块石子, 
-    跳4个单位到第7块石子, 最后，跳5个单位到第8个石子（即最后一块石子）。
+    跳4个单位到第7块石子, 最后，跳5个单位到第8个石子（即最后一块石子）。                                                                    
     示例 2:
 
     [0,1,2,3,4,8,9,11]
 
     返回 false。青蛙没有办法过河。 
     这是因为第5和第6个石子之间的间距太大，没有可选的方案供青蛙跳跃过去。
-
-    来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/frog-jump
  * 
  * 
  * 
  */ 
+// 减枝 加 缓存
 var canCross = function(stones) {
+    const memo = new Array(stones.length);
+    for(let i = 0; i < stones.length; i++){
+        memo[i] = new Array(stones.length).fill(false);
+    }
+    return _canCross(stones,0,0);
+    function _canCross(stones,start,jumpsize){
+        if(memo[start][jumpsize]){
+            return true;
+        }
+        
+        for(let i = start+1; i < stones.length; i++){
+            let gap = stones[i] - stones[start];
+            if(gap >= jumpsize - 1 && gap <= jumpsize +1){
+                memo[start][gap] = _canCross(stones,i,gap)
+                if(memo[start][gap]){
+                    return true;
+                }
+            }
+        }
+        return start === stones.length -1;
+    }
+};
 
+/**
+ * @param {number[]} stones
+ * @return {boolean}  存在就添加
+ */
+var canCross = function(stones) {
+    let map = new Map();
+    for(let i = 0; i < stones.length; i++){
+        map.set(stones[i],new Set());
+    }
+    map.get(0).add(0);
+    for(let i = 0; i < stones.length; i++){
+        for(let k of map.get(stones[i])){
+            for(let j = k-1; j <= k+1;j++){
+                if(j > 0 && map.has(stones[i] + j)){
+                    map.get(stones[i] + j).add(j)
+                }
+            }
+        }
+    }
+    return map.get(stones[stones.length-1]).size > 0;
 };
