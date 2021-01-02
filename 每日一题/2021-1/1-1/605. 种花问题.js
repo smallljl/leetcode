@@ -16,7 +16,6 @@
  *  
  * 
  */
-
  
 /**
  * @param {number[]} flowerbed
@@ -42,4 +41,20 @@ var canPlaceFlowers = function(flowerbed, n) {
         i++;
     }
     return false;
+  };
+
+  // 相邻不能种 每次跳2格
+  var canPlaceFlowers = function(flowerbed, n) {
+    let m = flowerbed.length;
+    let i = 0;
+    while(i < m && n > 0){
+        // 当前为空， 后一个为空 或者 当前是最后一个
+        if(!flowerbed[i] && (i+1 >= m || !flowerbed[i+1])){
+            n--;
+            i+=2;    
+        } else if(flowerbed[i]){
+            i+=2;
+        } else i++;
+    }
+    return n === 0;
   };
