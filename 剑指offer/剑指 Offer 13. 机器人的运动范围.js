@@ -24,7 +24,7 @@
  * @return {number}
  */
 var movingCount = function(m, n, k) {
-     if(!m || !n) return 0;
+    if(!m || !n) return 0;
     let queue = [[0,0]];
     // 已经走过的坐标
     let st = new Array(m);
