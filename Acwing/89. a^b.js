@@ -18,6 +18,8 @@
  * 
  */
 
+// (a×b) mod p = [(a mod p)×(b mod p)] mod p 
+
 var fs = require('fs');
 var buf = '';
 
