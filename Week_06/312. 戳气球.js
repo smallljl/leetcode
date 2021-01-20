@@ -19,6 +19,37 @@
     来源：力扣（LeetCode）
     链接：https://leetcode-cn.com/problems/burst-balloons
  */ 
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+/**
+ *  dp[0][n-1]
+ *  dp[i][j] : 气球序号 i - j 按照一定顺序戳破, 得到max coins
+ *  k : i - j 中任意一个气球，并让它是最后被戳破的 
+ *  k = i ~ j
+ *  dp[i][j] = max(dp[i][k-1] + dp[i][k+1] + nums[left]*nums[k]*nums[right])
+ * 
+ */
 var maxCoins = function(nums) {
-    
+    if(nums.length === 0) return 0;
+    let n = nums.length;
+    let dp = new Array(n);
+    for(let i = 0; i < n; i++){
+        dp[i] = new Array(n).fill(0)
+    }
+    for(let j = 0; j < n; j++){
+        for(let i = j; i >= 0; i--){
+            for(let k = i; k <= j; k++){
+                let left = i === 0 ? 1 : nums[i-1];
+                let right = j === n-1 ? 1 : nums[j+1];
+                let left_sum = k === i ? 0 : dp[i][k-1];
+                let right_sum = k === j ? 0 : dp[k+1][j];
+                dp[i][j] = Math.max(dp[i][j],left*nums[k]*right+left_sum+right_sum);
+            }
+        }
+    }
+    return dp[0][n-1]
 };
