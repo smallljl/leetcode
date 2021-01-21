@@ -40,6 +40,63 @@
  * 
  * 
  */ 
-var findCircleNum = function(M) {
-   // DFS BFS  (类似 岛屿问题)
+/**
+ * @param {number[][]} isConnected
+ * @return {number}
+ */
+var findCircleNum = function(isConnected) {
+   const privinces =  isConnected.length;
+   const visited =  new Set();
+   let circles = 0;
+   for(let i = 0; i < privinces; i++){
+       if(!visited.has(i)){
+           dfs(isConnected,visited,privinces,i);
+           circles++;
+       }
+   }
+   return circles;
 };
+
+const dfs = (isConnected, visited, provinces, i) => {
+   for(let j = 0; j < provinces; j++){
+       if(isConnected[i][j] === 1 && !visited.has(j)){
+         visited.add(j);
+         dfs(isConnected,visited,provinces,j);
+       }
+   }
+}
+
+
+
+var findCircleNum = function(isConnected) {
+   const provinces = isConnected.length;
+   const parent = new Array(provinces).fill(0)
+                                      .map((element, index) => index);
+
+   for (let i = 0; i < provinces; i++) {
+       for (let j = i + 1; j < provinces; j++) {
+           if (isConnected[i][j] == 1) {
+               union(parent, i, j);
+           }
+       }
+   }
+   let circles = 0;
+   parent.forEach((element, index) => {
+       if (element === index) {
+           circles++;
+       }
+   });
+
+   return circles;
+};
+
+const union = (parent, index1, index2) => {
+   parent[find(parent, index1)] = find(parent, index2);
+}
+
+const find = (parent, index) => {
+   if (parent[index] !== index) {
+       parent[index] = find(parent, parent[index]);
+   }
+   return parent[index];
+}
