@@ -30,8 +30,6 @@
     输入：board = [[3,2,4],[1,5,0]]
     输出：14
 
-    来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/sliding-puzzle
  * 
  * 
  * 

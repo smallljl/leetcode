@@ -25,14 +25,11 @@
         00011
     输出: 3
     解释: 每座岛屿只能由水平和/或竖直方向上相邻的陆地连接而成。
-
-    来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/number-of-islands
  * 
  * 
  * 
  * 
  */ 
 var numIslands = function(grid) {
-
+    
 };
