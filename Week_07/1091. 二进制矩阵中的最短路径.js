@@ -51,76 +51,75 @@ var shortestPathBinaryMatrix = function(grid) {
     return -1;
 };
 
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var shortestPathBinaryMatrix = function(grid) {
+  const row = grid.length, col = grid[0].length;
+  
+  if (grid.length == 1) {
+    return grid[0][0] == 0 ? 1 : -1;
+  }
 
-var shortestPathBinaryMatrix2 = function(grid){
-
-    const row = grid.length, col = grid[0].length;
-
-    if (grid.length == 1) {
-      return grid[0][0] == 0 ? 1 : -1;
-    }
-
-    if ((grid[0][0] == 1) || (grid[N-1][N-1] == 1)) {
-      return -1;
-    }
-
-
-    if(grid[row-1][col-1]) return -1;
-
-    const dirs = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
-
-    let len = 1;
-
-    let startQueue = [[0,0]];
-    let endQueue = [[row-1,col-1]];
-    let startVisited = new Array(row);
-    let endVisited = new Array(row);
-    let visited = new Array(row);
-    for(let i = 0; i < row; i++){
-      startVisited[i] = new Array(col).fill(false);
-      endVisited[i] = new Array(col).fill(false);
-      visited[i] = new Array(col).fill(false);
-    }
-
-    visited[0][0] = true;
-    visited[row-1][col-1] = true;
-    startVisited[0][0] = true;
-    endVisited[row-1][col-1] = true;
-
-    
-    while(startQueue.length && endQueue.length){
-      if(startQueue.length > endQueue.length){
-        let temp = startQueue;
-        startQueue = endQueue;
-        endQueue = temp;
-      
-        let tempA = startVisited;
-        startVisited = endVisited;
-        endVisited = tempA;
-      }
-
-      let newQueue = [];
-      for(let curSta of startQueue){
-        for(let i = 0; i < dirs.length; i++){
-          let dir = dirs[i];
-          let newX = curSta[0] + dir[0];
-          let newY = curSta[1] + dir[1];
-        
-          if(newX >= 0 && newX < row && newY >= 0 && newY < col && grid[newX][newY] === 0){
-            if(endVisited[newX][newY]){
-              return len + 1;
-            }
-            
-            if(visited[newX][newY]) continue;
-
-            newQueue.push([newX,newY]);
-            visited[newX][newY] = true;
-            startVisited[newX][newY] = true;
-          } 
-        }
-      }
-      startQueue = newQueue;
-      len++;
-    }
+  if ((grid[0][0] == 1) || (grid[row-1][col-1] == 1)) {
     return -1;
-}
+  }
+
+
+  if(grid[row-1][col-1]) return -1;
+
+  const dirs = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+
+  let len = 1;
+
+  let startQueue = [[0,0]];
+  let endQueue = [[row-1,col-1]];
+  let startVisited = new Array(row);
+  let endVisited = new Array(row);
+  let visited = new Array(row);
+  for(let i = 0; i < row; i++){
+    startVisited[i] = new Array(col).fill(false);
+    endVisited[i] = new Array(col).fill(false);
+    visited[i] = new Array(col).fill(false);
+  }
+
+  visited[0][0] = true;
+  visited[row-1][col-1] = true;
+  startVisited[0][0] = true;
+  endVisited[row-1][col-1] = true;
+
+  while(startQueue.length && endQueue.length){
+    if(startQueue.length > endQueue.length){
+      let temp = startQueue;
+      startQueue = endQueue;
+      endQueue = temp;
+    
+      let tempA = startVisited;
+      startVisited = endVisited;
+      endVisited = tempA;
+    }
+
+    let newQueue = [];
+    for(let curSta of startQueue){
+      for(let i = 0; i < dirs.length; i++){
+        let dir = dirs[i];
+        let newX = curSta[0] + dir[0];
+        let newY = curSta[1] + dir[1];
+      
+        if(newX >= 0 && newX < row && newY >= 0 && newY < col && grid[newX][newY] === 0){
+          if(endVisited[newX][newY]){
+            return len + 1;
+          }
+          if(visited[newX][newY]) continue;
+          newQueue.push([newX,newY]);
+          visited[newX][newY] = true;
+          startVisited[newX][newY] = true;
+        } 
+      }
+    }
+    startQueue = newQueue;
+    len++;
+  }
+  return -1;
+};
