@@ -37,4 +37,27 @@
  */ 
 var slidingPuzzle = function(board) {
 
+   let target = [1, 2, 3, 4, 5, 0];
+   let neighbor = [[3, 1], [4, 0, 2], [5, 1], [0, 4], [1, 3, 5], [2, 4]]
+   let queue = [[].concat(...board)];
+   let visited = {}, step = 0;
+   while (queue.length) {
+       let len = queue.length;
+       while (len--) {
+           let curr = queue.shift();
+           if (curr.toString() === target.toString()) return step;
+           let idx = curr.findIndex(v => !v);
+           for (let j = 0; j < neighbor[idx].length; j++) {
+               let adj = neighbor[idx][j];
+               let list = [...curr];
+               [list[adj], list[idx]] = [list[idx], list[adj]];
+               if (!visited[list.toString()]) {
+                   queue.push(list);
+                   visited[list.toString()] = true;
+               }
+           }
+       }
+       step++;
+   }
+   return -1;
 };
