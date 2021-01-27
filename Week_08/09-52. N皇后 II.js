@@ -31,5 +31,18 @@
  * @return {number}
  */
 var totalNQueens = function(n) {
-
+  return solve(n, 0, 0, 0, 0);
 };
+
+const solve = (n, row, col, pie, na) => {
+  if(row === n)
+      return 1;
+  let count = 0;
+  let pos = (~(col | pie | na)) & ((1 << n) -1);   // 1代表为空位  得到当前所有空位
+  while(pos !== 0){  // 有空位
+      let p = pos & (-pos);  //   取到最低位的
+      pos = pos & (pos - 1)  // 表示在p位置上放入皇后
+      count += solve(n, row+1, col | p, (pie | p) << 1, (na | p) >> 1);
+  }
+  return count;
+}
