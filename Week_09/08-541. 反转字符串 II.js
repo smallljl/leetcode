@@ -29,7 +29,6 @@ var reverseStr = function(s, k) {
    for(let i = 0,len = s.length; i < len; i += 2*k ){
       let left = i,
           right = Math.min(left+k-1,len-1);
-          debugger
       while (left < right){
           let temp = s[left];
           s[left++] = s[right];
