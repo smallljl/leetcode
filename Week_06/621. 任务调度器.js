@@ -20,6 +20,24 @@
  * 
  * 
  */ 
+/**
+ * @param {character[]} tasks
+ * @param {number} n
+ * @return {number}
+ */
 var leastInterval = function(tasks, n) {
+    // 得到 任务=> 出现次数 的 map
+    let mapKeyCount = new Map();
+    tasks.forEach((t)=>{
+        let m = (mapKeyCount.get(t) || 0) + 1;
+        mapKeyCount.set(t,m);
+    });
+
+    // 按个数倒序
+    let sorted = Array.from(mapKeyCount.values()).sort((a,b)=> b-a);
+
+    let countMax = sorted.lastIndexOf(sorted[0]);  // 最大数量的个数
+    //  总排队时间 = (桶个数 - 1) * (n + 1) + 最后一桶的任务数
+    return Math.max((sorted[0] - 1) * (n + 1) + countMax + 1,tasks.length);
 
 };

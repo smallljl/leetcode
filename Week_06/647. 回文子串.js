@@ -22,6 +22,24 @@
  * 
  * 
  */ 
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var countSubstrings = function(s) {
+   let res = 0;
+   for(let i = 0; i < s.length; i++){
+       countPalindrome(i,i);
+       countPalindrome(i,i+1);
+   }
+   return res;
 
+
+   function countPalindrome(start,end){
+       while(start >= 0 && end < s.length && s[start] === s[end]){
+           res++;
+           start--;
+           end++;
+       }
+   }
 };

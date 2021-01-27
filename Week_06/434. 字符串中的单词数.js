@@ -13,5 +13,16 @@
     链接：https://leetcode-cn.com/problems/number-of-segments-in-a-string
  */ 
 var countSegments = function(s) {
-
+    let count = 0;
+    let inSpace = true;
+    let n = s.length;
+    for(let i = 0; i < n; i++){
+        if(s[i] === " "){
+            inSpace = true;
+        } else if(inSpace){
+            inSpace = false;
+            count++;
+        }
+    }
+    return count;
 };

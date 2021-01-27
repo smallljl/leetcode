@@ -47,6 +47,38 @@
  * 
  * 
  */ 
-var minMutation = function(start, end, bank) {
 
+
+/**
+ * @param {string} start
+ * @param {string} end
+ * @param {string[]} bank
+ * @return {number}
+ */
+var minMutation = function(start, end, bank) {
+    let min = Infinity;
+    function backtracing(start,end,bank,used,count){
+        if(start === end){
+            min = Math.min(min,count);
+            return;
+        }
+        for(let i = 0; i < bank.length; i ++){
+            if(!used[i] && diff(start,bank[i]) === 1){
+                used[i] = true;
+                backtracing(bank[i],end,bank,used,count+1);
+                used[i] = false;
+            }
+        }
+    }
+    function diff(a,b){
+        let d = 0;
+        for(let i = 0; i < a.length;i++){
+            if(a.charAt(i) !== b.charAt(i)){
+                d++;
+            }
+        }
+        return d;
+    }
+    backtracing(start,end,bank,[],0);
+    return min === Infinity ? -1 : min;
 };
